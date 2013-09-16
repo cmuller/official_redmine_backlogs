@@ -108,6 +108,7 @@ de:
   field_time_entry_hours: "Zeiterfassung Stunden"
   field_time_entry_spend_on: "Zeit gebucht auf"
   field_time_entry_user_id: "Zeiterfassung Benutzer-Id"
+  field_feature: "Feature"
   field_tracker_id: "Tracker ID"
   field_velocity_based_estimate: "Geschwindigkeitsbasierende Abschätzung"
   label_all_tasks: "Alle Aufgaben"

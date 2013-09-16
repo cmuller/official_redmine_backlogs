@@ -107,6 +107,7 @@ ja:
   field_time_entry_comments: コメント
   field_time_entry_hours: 作業時間
   field_time_entry_spend_on: 作業内容
+  field_feature: "Feature"
   field_time_entry_user_id: 作業者のユーザID
   field_tracker_id: トラッカーID
   field_velocity_based_estimate: 残り時間に基づくベロシティ
