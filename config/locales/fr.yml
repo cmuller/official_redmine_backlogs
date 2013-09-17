@@ -108,7 +108,6 @@ fr:
   field_time_entry_hours: "Heures saisies en heures"
   field_time_entry_spend_on: "Entrée temps passé sur"
   field_time_entry_user_id: "ID utilisateur pour les heures saisies"
-  field_feature: "Feature"
   field_tracker_id: "Tracker ID"
   field_velocity_based_estimate: "Estimation basée sur la vélocité"
   label_all_tasks: "Toutes les tâches"
