@@ -150,6 +150,10 @@ filter:progid:DXImageTransform.Microsoft.Gradient(Enabled=1,GradientType=0,Start
   def remaining_hours_or_empty(item)
     item.remaining_hours.blank? || item.remaining_hours==0 ? "" : item.remaining_hours
   end
+  
+  def remaining_time_or_empty(item)
+    item.remaining_hours.blank? || item.remaining_hours==0 ? "" : RedmineAdvancedIssues::TimeManagement.calculate(item.remaining_hours,"days")
+  end
 
   def workdays(start_day, end_day)
     return (start_day .. end_day).select {|d| (d.wday > 0 and d.wday < 6) }

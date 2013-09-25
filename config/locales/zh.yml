@@ -101,6 +101,7 @@ zh:
   field_release_relationship: "Release relationship"
   field_release_start_date: "Release start date"
   field_remaining_hours: "Remaining (hours)"
+  field_remaining_time: "Remaining"
   field_story_points: 故事点数
   field_subject: "[[Subject]]"
   field_task_color: "Task color"
@@ -200,8 +201,10 @@ zh:
   remaining_story_points: "Remaining story points"
   story_description: Description
   story_estimation_hours: "Estimation (hours)"
+  story_estimation_time: "Estimation"
   story_points: Points
   story_remaining_hours: "Remaining (hours)"
+  story_remaining_time: "Remaining"
   story_spent_time: "Spent Time"
   story_status: Status
   today_not_in_release_warning: "Warning: current date is not within release date range."

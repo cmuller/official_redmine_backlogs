@@ -101,6 +101,7 @@ ja:
   field_release_relationship: リリース関係
   field_release_start_date: リリース開始日
   field_remaining_hours: 残り時間
+  field_remaining_time: 残り時
   field_story_points: ストーリーポイント
   field_subject: 題名
   field_task_color: "Task color"
@@ -200,8 +201,10 @@ ja:
   remaining_story_points: 残りのストーリーポイント
   story_description: 説明
   story_estimation_hours: 見積もり(時間)
+  story_estimation_time: 見積もり
   story_points: ストーリーポイント
   story_remaining_hours: 残り時間(時間)
+  story_remaining_time: 残り時間
   story_spent_time: 消費時間
   story_status: ステータス
   today_not_in_release_warning: "警告: 今日はリリース日の範囲に入っています"

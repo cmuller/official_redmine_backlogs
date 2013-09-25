@@ -105,7 +105,21 @@ class RbTask < Issue
 
       if params.has_key?(:remaining_hours)
         begin
-          self.remaining_hours = Float(params[:remaining_hours].to_s.gsub(',', '.'))
+          # self.remaining_hours = Float(params[:remaining_hours].to_s.gsub(',', '.'))
+
+          # remaining with default time_unit from redmine_advanced_issues
+          value = Float(params[:remaining_hours].to_s.gsub(',', '.'))
+          time_unit = ""
+
+          if value.to_s =~ /^([0-9]+)\s*[a-z]{1}$/
+            time_unit = RedmineAdvancedIssues::TimeManagement.getUnitTimeFromChar value.to_s[-1, 1]
+          end
+
+          if !time_unit.empty?
+            self.remaining_hours = RedmineAdvancedIssues::TimeManagement.calculateHours(value,time_unit)
+          else
+            self.remaining_hours = RedmineAdvancedIssues::TimeManagement.calculateHours(value,Setting.plugin_redmine_advanced_issues['default_unit'])
+          end
         rescue ArgumentError, TypeError
           Rails.logger.warn "#{params[:remaining_hours]} is wrong format for remaining hours."
         end

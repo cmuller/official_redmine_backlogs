@@ -101,6 +101,7 @@ es:
   field_release_relationship: "Release relationship"
   field_release_start_date: "Fecha inicial del release"
   field_remaining_hours: "Restante (horas)"
+  field_remaining_time: "Restante"
   field_story_points: "Puntos de historia"
   field_subject: Tema
   field_task_color: "Task color"
@@ -200,8 +201,10 @@ es:
   remaining_story_points: "Puntos de historia pendientes"
   story_description: Descripción
   story_estimation_hours: "Estimación (horas)"
+  story_estimation_time: "Estimación"
   story_points: Puntos
   story_remaining_hours: "Faltante (horas)"
+  story_remaining_time: "Faltante"
   story_spent_time: "Tiempo gastado"
   story_status: Estado
   today_not_in_release_warning: "Advertencia: la fecha actual no se encuentra dentro del rango de fecha del release."

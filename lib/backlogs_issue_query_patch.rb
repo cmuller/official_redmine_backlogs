@@ -27,8 +27,13 @@ module Backlogs
         base.add_available_column(QueryColumn.new(:story_points, :sortable => "#{Issue.table_name}.story_points"))
         base.add_available_column(QueryColumn.new(:velocity_based_estimate))
         base.add_available_column(QueryColumn.new(:position, :sortable => "#{Issue.table_name}.position"))
-        base.add_available_column(QueryColumn.new(:remaining_hours, :sortable => "#{Issue.table_name}.remaining_hours"))
         base.add_available_column(QueryColumn.new(:release, :sortable => "#{RbRelease.table_name}.name", :groupable => true))
+
+        base.add_available_column(QueryColumn.new(:remaining_hours, :sortable => "#{Issue.table_name}.remaining_hours"))
+        base.add_available_column(QueryColumn.new(:remaining_time, :sortable => "#{Issue.table_name}.remaining_time", :groupable => true))
+        
+        base.add_available_column(QueryColumn.new(:estimated_time, :sortable => "#{Issue.table_name}.estimated_time", :groupable => true))
+        base.add_available_column(QueryColumn.new(:spent_time, :sortable => "#{Issue.table_name}.spent_time", :groupable => true))
 
         alias_method_chain :available_filters, :backlogs_issue_type
         alias_method_chain :sql_for_field, :backlogs_issue_type

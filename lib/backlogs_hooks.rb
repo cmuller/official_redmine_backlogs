@@ -78,7 +78,7 @@ module BacklogsPlugin
           if issue.is_story?
             snippet += "<tr><th>#{l(:field_story_points)}</th><td>#{RbStory.find(issue.id).points_display}</td>"
             unless issue.remaining_hours.nil?
-              snippet += "<th>#{l(:field_remaining_hours)}</th><td>#{l_hours(issue.remaining_hours)}</td>"
+              snippet += "<th>#{l(:field_remaining_time)}</th><td>#{l_hours(RedmineAdvancedIssues::TimeManagement.calculate(issue.remaining_hours, Setting.plugin_redmine_advanced_issues['default_unit']))} #{issue.default_unit_time}</td>"
             end
             snippet += "</tr>"
             vbe = issue.velocity_based_estimate
@@ -93,7 +93,7 @@ module BacklogsPlugin
           end
 
           if issue.is_task? && User.current.allowed_to?(:update_remaining_hours, project) != nil
-            snippet += "<tr><th>#{l(:field_remaining_hours)}</th><td>#{issue.remaining_hours}</td></tr>"
+            snippet += "<tr><th>#{l(:field_remaining_time)}</th><td>#{ RedmineAdvancedIssues::TimeManagement.calculate(issue.remaining_hours, Setting.plugin_redmine_advanced_issues['default_unit'])} #{issue.default_unit_time}</td></tr>"
           end
 
           return snippet
@@ -161,9 +161,9 @@ module BacklogsPlugin
           end
 
           if issue.is_task? && !issue.new_record?
-            snippet += "<p><label for='remaining_hours'>#{l(:field_remaining_hours)}</label>"
-            snippet += text_field_tag('remaining_hours', issue.remaining_hours, :size => 3)
-            snippet += '</p>'
+            snippet += "<p><label for='remaining_hours'>#{l(:field_remaining_time)}</label>"
+            snippet += text_field_tag('remaining_hours', RedmineAdvancedIssues::TimeManagement.calculate(issue.remaining_hours, Setting.plugin_redmine_advanced_issues['default_unit']), :size => 3)
+            snippet += ' days</p>'
           end
 
           return snippet
@@ -379,9 +379,9 @@ module BacklogsPlugin
         begin
           if issue.is_task? && User.current.allowed_to?(:update_remaining_hours, time_entry.project) != nil
             remaining_hours = issue.remaining_hours
-            snippet += "<p><label for='remaining_hours'>#{l(:field_remaining_hours)}</label>"
-            snippet += text_field_tag('remaining_hours', remaining_hours, :size => 6)
-            snippet += '</p>'
+            snippet += "<p><label for='remaining_hours'>#{l(:field_remaining_time)}</label>"
+            snippet += text_field_tag('remaining_hours', RedmineAdvancedIssues::TimeManagement.calculate(issue.remaining_hours, Setting.plugin_redmine_advanced_issues['default_unit']), :size => 6)
+            snippet += ' days</p>'
           end
           return snippet
         rescue => e
@@ -401,12 +401,31 @@ module BacklogsPlugin
         return unless Backlogs.configured?(issue.project) &&
                       Backlogs.setting[:timelog_from_taskboard]=='enabled'
 
+        # if issue.is_task? && User.current.allowed_to?(:update_remaining_hours, time_entry.project) != nil
+        #   if params.include?("remaining_hours")
+        #     remaining_hours = params[:remaining_hours].gsub(',','.').to_f
+        #     if remaining_hours != issue.remaining_hours
+        #       issue.journalized_update_attribute(:remaining_hours, remaining_hours) if time_entry.save
+        #     end
+        #   end
+        # end
+
         if issue.is_task? && User.current.allowed_to?(:update_remaining_hours, time_entry.project) != nil
-          if params.include?("remaining_hours")
-            remaining_hours = params[:remaining_hours].gsub(',','.').to_f
-            if remaining_hours != issue.remaining_hours
-              issue.journalized_update_attribute(:remaining_hours, remaining_hours) if time_entry.save
-            end
+          remaining_hours = params[:remaining_hours].gsub(',','.').to_f
+
+          value = params[:remaining_hours]
+          time_unit = ""
+          if value.to_s =~ /^([0-9]+)\s*[a-z]{1}$/
+            time_unit = RedmineAdvancedIssues::TimeManagement.getUnitTimeFromChar value.to_s[-1, 1]
+          end
+          if !time_unit.empty?
+            remaining_hours = RedmineAdvancedIssues::TimeManagement.calculateHours(value,time_unit)
+          else
+            remaining_hours = RedmineAdvancedIssues::TimeManagement.calculateHours(value,Setting.plugin_redmine_advanced_issues['default_unit'])
+          end #if
+          
+          if remaining_hours != issue.remaining_hours
+            issue.journalized_update_attribute(:remaining_hours, remaining_hours) if time_entry.save
           end
         end
       end

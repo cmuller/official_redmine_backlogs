@@ -101,6 +101,7 @@ ru:
   field_release_relationship: "Release relationship"
   field_release_start_date: "Дата начала релиза"
   field_remaining_hours: "Осталось (часов)"
+  field_remaining_time: "Осталось"
   field_story_points: "Оценка истории (в баллах)"
   field_subject: Тема
   field_task_color: "Task color"
@@ -200,8 +201,10 @@ ru:
   remaining_story_points: "Оставшиеся баллы истории"
   story_description: Описание
   story_estimation_hours: "Оценка (часов)"
+  story_estimation_time: "Оценка"
   story_points: Баллы
   story_remaining_hours: "Осталось (часов)"
+  story_remaining_time: "Осталось"
   story_spent_time: "Потрачено времени"
   story_status: Статус
   today_not_in_release_warning: "Предупреждение: текущая дата вне периода текущего релиза."

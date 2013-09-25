@@ -102,6 +102,7 @@
   field_release_relationship: "Release relationship"
   field_release_start_date: "Utgivelse startdato"
   field_remaining_hours: "Remaining (hours)"
+  field_remaining_time: "Remaining"
   field_story_points: Storypoeng
   field_subject: Emne
   field_task_color: "Task color"
@@ -201,8 +202,10 @@
   remaining_story_points: "gjenværende storypoeng"
   story_description: Beskrivelse
   story_estimation_hours: "Estimert (timer)"
+  story_estimation_time: "Estimert"
   story_points: Poeng
   story_remaining_hours: "Gjenværene (timer)"
+  story_remaining_time: "Gjenværene"
   story_spent_time: "Brukt tid"
   story_status: Status
   today_not_in_release_warning: "Advarsel: Gjeldende dato er ikke innenfor tidsperioden for utgivelsen."

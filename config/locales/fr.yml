@@ -101,6 +101,7 @@ fr:
   field_release_relationship: "Release relationship"
   field_release_start_date: "Date de début de la release"
   field_remaining_hours: "Restant à faire (heures)"
+  field_remaining_time: "Restant à faire"
   field_story_points: "Points de scénarios"
   field_subject: Sujet
   field_task_color: "Task color"
@@ -200,8 +201,10 @@ fr:
   remaining_story_points: "Points restants du scénario"
   story_description: Description
   story_estimation_hours: "Estimation (heures)"
+  story_estimation_time: "Estimation"
   story_points: Points
   story_remaining_hours: "Restant à faire (heures)"
+  story_remaining_time: "Restant à faire"
   story_spent_time: "Temps passé"
   story_status: Statut
   today_not_in_release_warning: "Avertissement : la date actuelle n'est pas dans l'intervalle des dates de la release."

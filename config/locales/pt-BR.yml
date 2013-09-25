@@ -101,6 +101,7 @@ pt-BR:
   field_release_relationship: "Relacionamento do release"
   field_release_start_date: "Data inicial do release"
   field_remaining_hours: "Restando (horas)"
+  field_remaining_time: "Restando"
   field_story_points: "Pontos de história"
   field_subject: Assunto
   field_task_color: "Task color"
@@ -200,8 +201,10 @@ pt-BR:
   remaining_story_points: "Pontos restantes da história"
   story_description: Descrição
   story_estimation_hours: "Estimado (horas)"
+  story_estimation_time: "Estimado"
   story_points: Pontos
   story_remaining_hours: "Restando (horas)"
+  story_remaining_time: "Restando"
   story_spent_time: "Tempo gasto"
   story_status: Estado
   today_not_in_release_warning: "Aviso: a data atual não está no intervalo de datas do release"
