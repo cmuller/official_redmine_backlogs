@@ -81,12 +81,16 @@ class RbTask < Issue
   end
 
   def update_with_relationships(params, is_impediment = false)
+    # remaining_hours 
+    Redmine::Hook.call_hook(:controller_issues_edit_before_save, { :params => params, :issue => self, :time_entry => @time_entry, :journal => @current_journal})
+    params[:remaining_hours] = RedmineAdvancedIssues::TimeManagement.calculate(params[:remaining_hours],"days")
+    
     time_entry_add(params)
 
     attribs = RbTask.rb_safe_attributes(params)
 
     # Auto assign task to current user when
-    # 1. the task is not assigned to anyone yet
+    # 1. the task is not asscontinueigned to anyone yet
     # 2. task status changed (i.e. Updating task name or remaining hours won't assign task to user)
     # Can be enabled/disabled in setting page
     if Backlogs.setting[:auto_assign_task] && self.assigned_to_id.blank? && (self.status_id != params[:status_id].to_i)
