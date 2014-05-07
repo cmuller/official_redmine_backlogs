@@ -91,6 +91,7 @@ fr:
   field_backlogs_issue_type: "Type de carnet"
   field_base: ""
   field_blocks: Blocks
+  field_fixed_version_id: ID de la version cible
   field_name: Nom
   field_planned_velocity: "vélocité planifiée"
   field_position: Position

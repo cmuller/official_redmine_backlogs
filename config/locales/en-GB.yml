@@ -91,6 +91,7 @@ en-GB:
   field_backlogs_issue_type: "Backlog type"
   field_base: ""
   field_blocks: Blocks
+  field_fixed_version_id: Target version ID
   field_name: Name
   field_planned_velocity: "Planned velocity"
   field_position: Position

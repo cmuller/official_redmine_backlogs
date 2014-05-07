@@ -31,8 +31,12 @@ class RbTask < Issue
   end
 
   def self.create_with_relationships(params, user_id, project_id, is_impediment = false)
-    attribs = rb_safe_attributes(params)
-
+    #Redmine::Hook.call_hook(:controller_issues_edit_before_save, { :params => params, :issue => self, :time_entry => @time_entry, :journal => @current_journal})
+    #params[:remaining_hours] = RedmineAdvancedIssues::TimeManagement.calculate(params[:remaining_hours],"days")
+    if params['controller'] == 'rb_tasks'
+	attribs = rb_safe_attributes(params)
+    end
+    
     attribs['author_id'] = user_id
     attribs['tracker_id'] = RbTask.tracker
     attribs['project_id'] = project_id
