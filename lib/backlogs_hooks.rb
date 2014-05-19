@@ -1,8 +1,6 @@
 include RbCommonHelper
 include ContextMenusHelper
 
-require 'pry-nav'
-
 module BacklogsPlugin
   module Hooks
     class LayoutHook < Redmine::Hook::ViewListener
