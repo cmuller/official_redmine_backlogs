@@ -1,6 +1,8 @@
 include RbCommonHelper
 include ContextMenusHelper
 
+require 'pry-nav'
+
 module BacklogsPlugin
   module Hooks
     class LayoutHook < Redmine::Hook::ViewListener
@@ -78,7 +80,7 @@ module BacklogsPlugin
           if issue.is_story?
             snippet += "<tr><th>#{l(:field_story_points)}</th><td>#{RbStory.find(issue.id).points_display}</td>"
             unless issue.remaining_hours.nil?
-              snippet += "<th>#{l(:field_remaining_time)}</th><td>#{l_hours(RedmineAdvancedIssues::TimeManagement.calculate(issue.remaining_hours, Setting.plugin_redmine_advanced_issues['default_unit']))} #{issue.default_unit_time}</td>"
+              snippet += "<th>#{l(:field_remaining_time)}</th><td>#{issue.remaining_hours} #{issue.default_unit_time}</td>"
             end
             snippet += "</tr>"
             vbe = issue.velocity_based_estimate
